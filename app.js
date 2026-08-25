@@ -1,11 +1,9 @@
-const wcaEvents=[
- ['2x2x2 Cube','Speed','2x2 tutorial'],['3x3x3 Cube','Speed','3x3 tutorial'],['4x4x4 Cube','Speed','4x4 tutorial'],['5x5x5–7x7x7 Cubes','Speed','5x5 6x6 7x7 tutorial'],['3x3x3 Blindfolded','Blindfolded','3x3 blindfolded tutorial'],['4x4x4 & 5x5x5 Blindfolded','Blindfolded','4x4 5x5 blindfolded tutorial'],['3x3x3 Fewest Moves','Other','fewest moves cube tutorial'],['3x3x3 One-Handed','Speed','one handed 3x3 tutorial'],['Clock','Other','rubiks clock tutorial'],['Megaminx','Other','megaminx tutorial'],['Pyraminx','Other','pyraminx tutorial'],['Skewb','Other','skewb tutorial'],['Square-1','Other','square-1 tutorial'],['Multi-Blind','Blindfolded','multi blind cube tutorial']
+const events = [
+  '2x2x2 Cube', '3x3x3 Cube', '4x4x4 Cube', '5x5x5–7x7x7 Cubes',
+  '3x3x3 Blindfolded', '4x4x4 & 5x5x5 Blindfolded',
+  '3x3x3 Fewest Moves', '3x3x3 One-Handed', 'Clock', 'Megaminx',
+  'Pyraminx', 'Skewb', 'Square-1', 'Multi-Blind'
 ];
-const wca='https://www.worldcubeassociation.org/regulations/';
-const search=q=>'https://www.youtube.com/results?search_query='+encodeURIComponent(q);
-function card([name,category,query],official=true){return `<article class="resource-card"><span class="tag">${category}</span><h3>${name}</h3><p>${official?'Official WCA event':'Community event'} · free learning links and video searches.</p><div class="links">${official?`<a href="${wca}" target="_blank" rel="noreferrer">Regulations ↗</a>`:''}<a href="${search(query)}" target="_blank" rel="noreferrer">Videos ↗</a><a href="${search(name+' algorithms')}" target="_blank" rel="noreferrer">Algorithms ↗</a></div></article>`}
-const grid=document.querySelector('#official-grid'), filters=document.querySelector('#event-filters'), input=document.querySelector('#event-search');
-let category='All';
-function render(){const query=input.value.toLowerCase();grid.innerHTML=wcaEvents.filter(e=>(category==='All'||e[1]===category)&&e.join(' ').toLowerCase().includes(query)).map(e=>card(e)).join('')||'<p>No events matched that search.</p>'}
-['All','Speed','Blindfolded','Other'].forEach(c=>{const b=document.createElement('button');b.className='filter'+(c==='All'?' active':'');b.textContent=c;b.onclick=()=>{category=c;filters.querySelectorAll('button').forEach(x=>x.classList.toggle('active',x===b));render()};filters.append(b)});
-input.addEventListener('input',render);render();
+
+const grid = document.querySelector('#event-grid');
+grid.innerHTML = events.map(name => `<a class="event-box" href="event.html?name=${encodeURIComponent(name)}">${name}</a>`).join('');

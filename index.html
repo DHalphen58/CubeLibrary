@@ -3,31 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Free cubing resources and WCA statistics.">
-  <title>CubeLibrary — learn, watch, analyze</title>
+  <title>CubeLibrary</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="site-header">
-    <a class="brand" href="#home" aria-label="CubeLibrary home">Cube<span>Library</span></a>
-    <nav aria-label="Main navigation">
-      <a href="#official">WCA events</a>
-    </nav>
-  </header>
-  <main id="home">
-    <section class="hero">
-      <p class="eyebrow">THE OPEN CUBING REFERENCE</p>
-      <h1>Learn every event.<br><em>Explore the numbers.</em></h1>
-      <p class="lede">A free, community-minded library of tutorials and videos for official and unofficial cubing events — with an open home for WCA statistics.</p>
-      <div class="hero-actions"><a class="button" href="#official">Browse WCA events</a><a class="text-link" href="#official">Explore all events →</a></div>
-    </section>
-    <section id="official" class="section">
-      <div class="section-heading"><p class="eyebrow">OFFICIAL EVENTS</p><h2>WCA resource library</h2><p>Filter by event to find free learning material and video searches. Resources open in a new tab.</p></div>
-      <div class="toolbar"><label for="event-search">Find an event</label><input id="event-search" type="search" placeholder="Try “blindfolded” or “square-1”"><div id="event-filters" class="filters" aria-label="Event categories"></div></div>
-      <div id="official-grid" class="resource-grid" aria-live="polite"></div>
-    </section>
+  <main>
+    <h1>CubeLibrary</h1>
+    <div id="event-grid" class="event-grid" aria-label="Official WCA events"></div>
   </main>
-  <footer><span>CubeLibrary</span><a href="https://www.worldcubeassociation.org/" target="_blank" rel="noreferrer">World Cube Association</a><a href="https://github.com/DHalphen58/CubeLibrary" target="_blank" rel="noreferrer">Source on GitHub</a></footer>
   <script src="app.js"></script>
 </body>
 </html>

@@ -23,6 +23,20 @@ if (specialEvents.has(name)) {
       <a class="event-box" href="#">Trainer</a>
       <a class="event-box" href="#">Algsheet</a>
     </div>`;
+  } else if (section === 'example-solves') {
+    // Add example solves here. Keep data-language invisible; it drives the filter.
+    const solves = [{ title: 'Example solve', url: '#', creator: 'Creator', language: 'en' }];
+    content.innerHTML = `<label class="language-filter">Language
+      <select id="solve-language"><option value="all">All languages</option></select>
+    </label>
+    <div id="example-solves" class="solve-list">${solves.map(solve => `<div class="resource-template" data-language="${solve.language}">
+      <a href="${solve.url}">${solve.title}</a><span>by ${solve.creator}</span>
+    </div>`).join('')}</div>`;
+    const select = document.querySelector('#solve-language');
+    [...new Set(solves.map(solve => solve.language))].sort().forEach(language => select.insertAdjacentHTML('beforeend', `<option value="${language}">${language.toUpperCase()}</option>`));
+    select.addEventListener('change', () => document.querySelectorAll('#example-solves .resource-template').forEach(solve => {
+      solve.hidden = select.value !== 'all' && solve.dataset.language !== select.value;
+    }));
   } else {
     content.innerHTML = '<p>This section is ready for resources.</p>';
   }

@@ -5,7 +5,8 @@ const method = params.get('method');
 const specialEvents = new Set(['2x2x2 Cube', 'Pyraminx', 'Skewb']);
 const largeCubeEvents = new Set(['4x4x4 Cube', '5x5x5–7x7x7 Cubes']);
 const largeCubeSections = ['Methods', 'Example Solves', 'Algorithms', 'Centers', 'Edges', 'Tools'];
-const titlePart = method || (section === 'one-looking' ? '1 Looking' : section === 'example-solves' ? 'Example Solves' : section ? 'Algorithms' : '');
+const sectionTitles = { 'one-looking': '1 Looking', 'example-solves': 'Example Solves', algorithms: 'Algorithms', methods: 'Methods', centers: 'Centers', edges: 'Edges', tools: 'Tools' };
+const titlePart = method || (section ? sectionTitles[section] || section : '');
 document.title = (titlePart ? titlePart + ' | ' : '') + name + ' | CubeLibrary';
 document.querySelector('#event-name').textContent = titlePart ? name + ' — ' + titlePart : name;
 

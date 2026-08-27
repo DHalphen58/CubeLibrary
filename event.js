@@ -51,7 +51,7 @@ if (threeByThreeMethods[name]) {
   if (!section) {
     const items = name === '3x3x3 One-Handed'
       ? [box('Methods', { section: 'methods' }), box('Fingertricks', { section: 'fingertricks' })]
-      : [box('Methods', { section: 'methods' })];
+      : Object.keys(methods).map(item => box(item, { section: 'methods', method: item }));
     showBoxes(items);
   } else if (section === 'fingertricks') {
     showLanguageEntries([resourceTemplate('Fingertrick resource')]);
